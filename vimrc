@@ -12,10 +12,12 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive' " Git
+Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree' 
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'rking/ag.vim'
 
 " Languages
 Plugin 'vim-ruby/vim-ruby'
@@ -23,8 +25,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'pangloss/vim-javascript'
 
 " Themes
-Plugin 'tomasr/molokai'
-
+Plugin 'chriskempson/base16-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,5 +42,16 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set t_Co=256
-colorscheme molokai
+set background=dark
+let base16colorspace=256  
+colorscheme base16-default
+
+set cursorline
+set number
+set nowrap    
+set scrolloff=2
+set showmatch
+set tabstop=2
+set smartindent
+set expandtab
+set scrolloff=9999
