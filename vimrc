@@ -14,6 +14,7 @@ Plugin 'bling/vim-airline'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'rking/ag.vim'
 Plugin 'bogado/file-line'
+Plugin 'mhinz/vim-startify'
 
 " Languages
 Plugin 'vim-ruby/vim-ruby'
@@ -51,19 +52,24 @@ set softtabstop=2
 set tabstop=2
 set scrolloff=9999
 set wildignore=*.png,*.jpg,*.xcf,*.wav,log/*,tmp/*,coverage/*
-
+set viminfo='100,n$HOME/.vim/files/info/viminfo
 set background=dark
+
 let base16colorspace=256
 colorscheme base16-default
 
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
-let &colorcolumn=join(range(121,999),",")
+let &colorcolumn=join(range(81,999),",")
 
 let mapleader=','
 let g:rspec_command = "!spring rspec {spec}"
 let g:ctrlp_custom_ignore = { 'dir': '\v(tmp|coverage|public)$' }
+let g:ctrlp_reuse_window  = 'startify'
 
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e " remove trailing space
+autocmd VimEnter * NERDTree
+autocmd BufEnter * NERDTreeMirror
+autocmd VimEnter * wincmd w
 
 " Mappings
 nmap ; :
