@@ -23,6 +23,8 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-rails'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'keith/swift.vim'
+Plugin 'mxw/vim-jsx'
 
 " Themes
 Plugin 'chriskempson/base16-vim'
@@ -53,7 +55,6 @@ set softtabstop=2
 set tabstop=2
 set scrolloff=9999
 set wildignore=*.png,*.jpg,*.xcf,*.wav,log/*,tmp/*,coverage/*
-set viminfo='100,n$HOME/.vim/files/info/viminfo
 set background=dark
 set noswapfile
 
@@ -63,7 +64,11 @@ set undodir=$HOME/.vim/undo
 set undolevels=1000
 set undoreload=10000
 
-let base16colorspace=256
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+" set foldlevel=2
+
 colorscheme base16-default
 
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
@@ -73,6 +78,9 @@ let mapleader=','
 let g:rspec_command = "!spring rspec {spec}"
 let g:ctrlp_custom_ignore = { 'dir': '\v(tmp|coverage|public)$' }
 let g:ctrlp_reuse_window  = 'startify'
+
+" vim-jsx
+let g:jsx_ext_required = 0
 
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing space
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -92,3 +100,8 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+au BufRead,BufNewFile *.es6 set filetype=javascript
+au BufRead,BufNewFile *.swift set filetype=swift
+
+autocmd FileType swift setlocal shiftwidth=4 tabstop=4 softtabstop=2
